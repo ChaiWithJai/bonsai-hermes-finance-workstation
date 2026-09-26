@@ -5,8 +5,8 @@ import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
-import sync_google_sheets
-from sync_google_sheets import SCHEMA, normalize_tab
+from finance_workstation import sheets as sync_google_sheets
+from finance_workstation.sheets import SCHEMA, normalize_tab
 
 
 class SheetImportTests(unittest.TestCase):

@@ -9,9 +9,9 @@ from pathlib import Path
 
 import mlflow
 
-import finance
+from finance_workstation import tools as finance
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
     result = {"run_id": run_id, "tracking_uri": mlflow.get_tracking_uri(),
               "checks_passed": sum(c["passed"] for c in checks), "checks_total": len(checks),
               "evaluation_scope": "deterministic_tool_behavior_only", "model_evaluated": False}
-    (ROOT / "eval-result.json").write_text(json.dumps(result, indent=2) + "\n")
+    (ROOT / "evidence/evaluations/eval-result.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
     if any(not c["passed"] for c in checks):
         raise SystemExit(1)

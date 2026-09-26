@@ -1,4 +1,4 @@
-"""Download two explicitly named Google Sheets tabs into an atomic local snapshot.
+"""Download two explicitly named Google Sheets tabs into a validated local snapshot.
 
 Credentials are supplied through environment variables and are never persisted.
 The tool does not write to Google Sheets.
@@ -7,6 +7,7 @@ import csv
 import io
 import json
 import os
+import sys
 import tempfile
 import urllib.parse
 import urllib.request
@@ -68,15 +69,15 @@ def main():
         writer.writerow(expected)
         writer.writerows(rows)
         downloaded[filename] = stream.getvalue()
-    target = Path(os.environ.get("FINANCE_DATA_DIR", ROOT / "sheets_snapshot"))
+    target = Path(os.environ.get("FINANCE_DATA_DIR", Path.cwd() / "sheets_snapshot"))
     target.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=target) as temp:
         stage = Path(temp)
         for filename, body in downloaded.items():
             (stage / filename).write_text(body)
-        (stage / "mandate.json").write_bytes((ROOT / "data" / "mandate.json").read_bytes())
+        (stage / "mandate.json").write_bytes((ROOT / "sample_data" / "mandate.json").read_bytes())
         import subprocess
-        result = subprocess.run(["python3", "-c", "import finance; finance.snapshot()"],
+        result = subprocess.run([sys.executable, "-c", "from finance_workstation import tools; tools.snapshot()"],
                                 cwd=ROOT, env={**os.environ, "FINANCE_DATA_DIR": str(stage)},
                                 capture_output=True, text=True)
         if result.returncode:

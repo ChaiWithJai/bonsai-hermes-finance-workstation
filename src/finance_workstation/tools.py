@@ -11,8 +11,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DATA = Path(os.environ.get("FINANCE_DATA_DIR", ROOT / "data"))
-OUT = Path(os.environ.get("FINANCE_DRAFT_DIR", ROOT / "drafts"))
+DATA = Path(os.environ.get("FINANCE_DATA_DIR", ROOT / "sample_data"))
+OUT = Path(os.environ.get("FINANCE_DRAFT_DIR", Path.cwd() / "drafts"))
 
 
 def read_csv(name: str) -> list[dict]:
@@ -173,7 +173,7 @@ def main():
             method = q["method"]
             if method == "initialize":
                 result = {"protocolVersion": q.get("params", {}).get("protocolVersion", "2024-11-05"),
-                          "capabilities": {"tools": {}}, "serverInfo": {"name": "fictional-finance-workstation", "version": "0.1.0"}}
+                          "capabilities": {"tools": {}}, "serverInfo": {"name": "bonsai-portfolio-review", "version": "0.1.0"}}
             elif method == "ping":
                 result = {}
             elif method == "tools/list":

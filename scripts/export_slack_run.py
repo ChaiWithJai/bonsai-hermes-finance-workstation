@@ -9,7 +9,7 @@ from pathlib import Path
 import mlflow
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 DB = Path.home() / ".hermes/profiles/commitments/state.db"
 SESSION_ID = "20260926_142835_a3f42516"
 TOOLS = {
@@ -95,7 +95,7 @@ def main():
         "duplicate_comparison_call": names.count("mcp__finance_workstation__compare_scenarios") - 1,
         "slack_message_url": "https://app.slack.com/client/T09PDJJ3U95/D0C4B99LSRZ",
     }
-    out = ROOT / "slack-live-evidence.json"
+    out = ROOT / "evidence/sessions/slack-live-evidence.json"
     out.write_text(json.dumps(evidence, indent=2) + "\n")
     mlflow.set_tracking_uri(os.environ.get("MLFLOW_TRACKING_URI", "http://127.0.0.1:5210"))
     mlflow.set_experiment("bonsai-finance-workstation")
@@ -115,7 +115,7 @@ def main():
     result = {"session_id": SESSION_ID, "mlflow_run_id": run_id,
               "checks_passed": sum(checks.values()), "checks_total": len(checks),
               "duplicate_comparison_call": evidence["duplicate_comparison_call"]}
-    (ROOT / "slack-live-result.json").write_text(json.dumps(result, indent=2) + "\n")
+    (ROOT / "evidence/evaluations/slack-live-result.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
     if not all(checks.values()):
         raise SystemExit(1)

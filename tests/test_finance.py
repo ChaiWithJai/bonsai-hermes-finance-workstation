@@ -5,10 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-spec = importlib.util.spec_from_file_location("finance", ROOT / "finance.py")
-finance = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(finance)
+from finance_workstation import tools as finance
 
 
 class FinanceDemoTests(unittest.TestCase):

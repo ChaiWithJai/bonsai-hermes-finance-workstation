@@ -6,7 +6,7 @@ from pathlib import Path
 
 import mlflow
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 PROFILE = Path.home() / ".hermes" / "profiles" / "finance-workstation"
 SESSION_ID = os.environ.get("FINANCE_SESSION_ID", "20260926_124340_3f8174")
 
@@ -35,7 +35,7 @@ def main():
                 "human_reviewed": False, "slack_evaluated": False,
                 "session": dict(session), "usage": dict(usage) if usage else None,
                 "tool_names": tools, "checks": checks, "messages": messages}
-    out = ROOT / "live-run-evidence.json"
+    out = ROOT / "evidence/sessions/live-run-evidence.json"
     out.write_text(json.dumps(evidence, indent=2) + "\n")
     mlflow.set_tracking_uri(os.environ.get("MLFLOW_TRACKING_URI", "http://127.0.0.1:5210"))
     mlflow.set_experiment("bonsai-finance-workstation")
@@ -52,7 +52,7 @@ def main():
     summary = {"session_id": SESSION_ID, "run_id": run_id, "checks": checks,
                "checks_passed": sum(checks.values()), "checks_total": len(checks),
                "model_api_calls": usage["api_call_count"] if usage else None}
-    (ROOT / "live-run-result.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (ROOT / "evidence/evaluations/live-run-result.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary))
     if not all(checks.values()):
         raise SystemExit(1)

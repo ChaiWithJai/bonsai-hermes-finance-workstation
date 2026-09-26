@@ -1,0 +1,67 @@
+# Optional Google Sheets and Slack connections
+
+The local run in the [README](../README.md) uses the bundled portfolio and analyst reports. The two connections below are independent. Google Sheets downloads a validated input snapshot for the finance tools. Slack lets an authorized user ask Hermes to use those tools through a bot.
+
+## Read a Google Sheet into the local tools
+
+Create a workbook that your Google account can read. Name its tabs `Portfolio` and `Analyst Reports`, and use the column headers in [portfolio.csv](../src/finance_workstation/sample_data/portfolio.csv) and [analyst_reports.csv](../src/finance_workstation/sample_data/analyst_reports.csv). The importer accepts a title row above either header. It copies the repository's [mandate](../src/finance_workstation/sample_data/mandate.json) into the snapshot, so the workbook changes the holdings and report inputs but does not change the allocation rules.
+
+The current validator expects the example's `FCT-` asset IDs and `FIC-` report IDs, positive integer units and prices, and dates matching the mandate. Start by importing the supplied rows. To adapt the example to another data model, update the validation in [tools.py](../src/finance_workstation/tools.py) and the mandate together.
+
+For a manual test, obtain an access token through Google's [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/). Authorize `https://www.googleapis.com/auth/spreadsheets.readonly` with the account that can read the workbook, exchange the authorization code, and copy the access token. Access tokens expire, so repeat authorization or implement Google's [installed-app OAuth flow](https://developers.google.com/identity/protocols/oauth2/native-app) for a persistent integration. Organization policies may require an approved OAuth client.
+
+In the activated project environment, provide the workbook ID and access token. For example, on macOS with zsh:
+
+```sh
+export FINANCE_SPREADSHEET_ID='your-spreadsheet-id'
+read -rs 'FINANCE_GOOGLE_TOKEN?Google Sheets access token: '
+export FINANCE_GOOGLE_TOKEN
+export FINANCE_DATA_DIR="$PWD/sheets_snapshot"
+python -m finance_workstation.sheets
+```
+
+The command downloads the two tabs through the Sheets API, checks their headers and values, and writes `portfolio.csv`, `analyst_reports.csv`, `mandate.json`, and `source.json` under `sheets_snapshot/`. The access token is used by the importer and is not written to the snapshot. Check the recorded source before connecting Hermes:
+
+```sh
+python -c 'from finance_workstation.tools import snapshot; s = snapshot(); print(s["source"]); print(s["snapshot_sha256"])'
+```
+
+The source should report `integration: google_sheets_download`, the workbook ID, and `synced_at`. The hash identifies the validated local snapshot. If the first import fails, run `unset FINANCE_DATA_DIR` to return to the bundled sample. Do not configure Hermes to read an incomplete download. Stop the gateway before refreshing a snapshot in place because the importer replaces the files sequentially.
+
+`scripts/setup_profile.py` writes the Hermes profile to `~/.hermes/profiles/finance-workstation/`. In that profile's `config.yaml`, add the absolute snapshot directory to `mcp_servers.finance.env`:
+
+```json
+"env": {
+  "FINANCE_MLFLOW_TRACE": "0",
+  "FINANCE_DATA_DIR": "/absolute/path/to/bonsai-hermes-finance-workstation/sheets_snapshot"
+}
+```
+
+Keep any existing `FINANCE_MLFLOW_TRACE` value if you use local MLflow tracing. The `FINANCE_DATA_DIR` value must point to the directory, not a CSV file. A new `hermes --profile finance-workstation chat ...` process will read the changed profile. If a gateway is already serving that profile, restart it with `hermes --profile finance-workstation gateway restart` so its MCP process loads the new environment and data. Then ask Hermes to call `read_portfolio` and report the source integration, sync time, and snapshot hash. Verify those fields against `source.json` and the direct `snapshot()` read above before treating the answer as a Sheet-backed review.
+
+The tools read the downloaded snapshot, not the live workbook on every question. Run the importer again when the workbook changes, and restart a running gateway before relying on the new snapshot. This importer does not write to Google Sheets.
+
+## Chat with the agent in Slack
+
+First complete the local Hermes run from the [README](../README.md), using the `finance-workstation` profile. Create a new Slack app from [config/slack-manifest.json](../config/slack-manifest.json) in Slack's app management page. The manifest enables Socket Mode, the bot's Messages tab, required events and bot scopes. In the new app's **Basic Information**, create an app-level token with `connections:write`; its value starts with `xapp-`. Install the app to the workspace and copy its bot token, which starts with `xoxb-`. Copy the Slack Member ID of each person allowed to DM the bot.
+
+Copy the profile's generated `.env.example` to `.env`, then fill these three fields in `~/.hermes/profiles/finance-workstation/.env`:
+
+```text
+SLACK_BOT_TOKEN=xoxb-your-bot-token
+SLACK_APP_TOKEN=xapp-your-app-token
+SLACK_ALLOWED_USERS=U01ABC2DEF3
+```
+
+Use comma-separated Member IDs for more than one allowed user. Keep the two tokens in the profile's `.env`, outside the repository. A separate Slack app and tokens are needed when another Hermes profile already serves a bot; two profiles should not connect with the same bot token.
+
+Check the gateway state and start this profile's gateway in a terminal if no service is running:
+
+```sh
+hermes --profile finance-workstation gateway status
+hermes --profile finance-workstation gateway run
+```
+
+Leave the foreground gateway running while testing. If this profile already has an installed gateway service, use `hermes --profile finance-workstation gateway restart` after changing its `.env` or tool configuration, then check `gateway status` again. Do not start a second forced gateway on the same bot token.
+
+Open the bot's Messages tab in Slack and send the same portfolio question used in the local run. The reply should give the current and candidate weights, explain the base and downside change, identify the analyst reports, and state whether the source was the bundled sample data or a downloaded Sheet snapshot. The bot can save a local review draft when asked; it cannot place an order. The [captured Slack session](../evidence/sessions/slack-live-evidence.json) used an existing shared bot profile and the bundled sample data, so it verifies a Slack exchange but is not a test of the separate app or authenticated Sheet import described here.
