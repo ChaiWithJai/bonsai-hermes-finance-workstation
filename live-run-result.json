@@ -1,0 +1,15 @@
+{
+  "session_id": "20260926_124340_3f8174",
+  "run_id": "e05c98815de04e799a35c92111fa07fa",
+  "checks": {
+    "used_required_tools": true,
+    "no_write_tool": true,
+    "base_and_downside_numbers": true,
+    "cites_uncertain_report": true,
+    "names_fixture": true,
+    "states_no_trade": true
+  },
+  "checks_passed": 6,
+  "checks_total": 6,
+  "model_api_calls": 4
+}

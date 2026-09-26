@@ -1,0 +1,4 @@
+asset_id,asset_name,sleeve,units,price_usd,as_of,source_ref
+FCT-HARBOR,Harbor Infrastructure Notes,defensive,450,1000,2026-09-25,FIC-REPORT-01
+FCT-ORBIT,Orbit Clinical Software Basket,growth,350,1000,2026-09-25,FIC-REPORT-02
+FCT-RESERVE,Reserve Treasury Proxy,liquidity,200,1000,2026-09-25,FIC-REPORT-03

@@ -1,0 +1,27 @@
+{
+  "model": {
+    "default": "bonsai-ui-public-ternary-bonsai2",
+    "provider": "custom",
+    "base_url": "http://127.0.0.1:62737/v1",
+    "api_key": "local",
+    "api_mode": "chat_completions",
+    "streaming": false,
+    "context_length": 65536
+  },
+  "agent": {"max_turns": 8, "reasoning_effort": "medium"},
+  "platform_toolsets": {"cli": ["finance"], "slack": ["finance"]},
+  "mcp_servers": {
+    "finance": {
+      "command": "python3",
+      "args": ["REPLACED_BY_SETUP"],
+      "tools": {"resources": false, "prompts": false},
+      "timeout": 30,
+      "env": {"FINANCE_MLFLOW_TRACE": "1"}
+    }
+  },
+  "memory": {"memory_enabled": false, "user_profile_enabled": false},
+  "platforms": {"slack": {"extra": {"reply_in_thread": true, "unfurl_links": false, "unfurl_media": false, "allow_bots": "none"}}},
+  "slack": {"unauthorized_dm_behavior": "ignore"},
+  "gateway": {"multiplex_profiles": false},
+  "tools": {"tool_search": {"enabled": "off"}}
+}

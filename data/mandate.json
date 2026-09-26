@@ -1,0 +1,16 @@
+{
+  "name": "Fictional balanced portfolio mandate",
+  "currency": "USD",
+  "as_of": "2026-09-25",
+  "grid_step_pct": 5,
+  "sleeve_bounds_pct": {
+    "defensive": [30, 55],
+    "growth": [20, 45],
+    "liquidity": [15, 30]
+  },
+  "max_one_way_turnover_pct": 15,
+  "downside_floor_pct": -18,
+  "objective": "probability_weighted_return_pct - 0.10 * abs(min(downside_return_pct, 0)) - 0.02 * one_way_turnover_pct",
+  "scenario_probabilities": {"base": 0.6, "upside": 0.2, "downside": 0.2},
+  "disclaimer": "Fictional educational data. The output is a candidate for human review, not an investment instruction."
+}

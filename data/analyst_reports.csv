@@ -1,0 +1,4 @@
+report_id,asset_id,analyst,as_of,base_return_pct,upside_return_pct,downside_return_pct,confidence,thesis,risk
+FIC-REPORT-01,FCT-HARBOR,Fictional Credit Desk,2026-09-25,5.0,8.0,-9.0,medium,Contracted infrastructure revenue supports coupon coverage,Refinancing costs could compress coverage
+FIC-REPORT-02,FCT-ORBIT,Fictional Software Desk,2026-09-25,14.0,27.0,-31.0,low,Enterprise renewal growth could support expansion,Concentration and implementation delays could reduce renewals
+FIC-REPORT-03,FCT-RESERVE,Fictional Treasury Desk,2026-09-25,3.0,3.5,2.0,high,Short duration limits price sensitivity,Reinvestment yield could fall

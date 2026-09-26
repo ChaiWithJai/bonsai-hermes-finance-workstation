@@ -1,0 +1,8 @@
+{
+  "run_id": "d02a8818609841f5a548a0a1a83cda0b",
+  "tracking_uri": "http://127.0.0.1:5210",
+  "checks_passed": 5,
+  "checks_total": 5,
+  "evaluation_scope": "deterministic_tool_behavior_only",
+  "model_evaluated": false
+}
