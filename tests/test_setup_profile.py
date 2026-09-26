@@ -23,6 +23,7 @@ class ProfileSetupTest(unittest.TestCase):
                             "--profile", "setup-check"], env=env, check=True, capture_output=True)
             profile = home / ".hermes/profiles/setup-check/config.yaml"
             server = json.loads(profile.read_text())["mcp_servers"]["finance"]
+            self.assertEqual(server["command"], str(Path(sys.executable).absolute()))
             self.assertEqual(server["env"]["FINANCE_DATA_DIR"], str(data))
             self.assertEqual(server["env"]["FINANCE_DRAFT_DIR"], str(home / "drafts"))
             child_env = dict(os.environ)
