@@ -1,0 +1,62 @@
+{
+  "scope": "one completed Slack DM through Hermes to local Bonsai; fictional CSV data",
+  "human_reviewed": false,
+  "sheet_read_by_hermes": false,
+  "session": {
+    "id": "20260926_142835_a3f42516",
+    "source": "slack",
+    "started_at": 1790447315.5152588,
+    "model": "bonsai-ui-public-ternary-bonsai2"
+  },
+  "usage_main_turn": {
+    "model": "bonsai-ui-public-ternary-bonsai2",
+    "api_call_count": 4,
+    "input_tokens": 4664,
+    "output_tokens": 2252,
+    "reasoning_tokens": 0
+  },
+  "prompt": "Fictional portfolio workstation demo, read-only: read the current portfolio and analyst reports, then compare the current allocation with the highest-scoring candidate under the written mandate. Cite the report IDs, dates, and confidence for Harbor and Orbit, explain the downside tradeoff, and state whether the data came from local CSV files or a live Google Sheet. Do not save a draft or place an order.",
+  "answer": "All three reads completed. Here's the full picture, with a note on scope: this is the **fictional A+ Active Services finance workstation demo** (review date 2026-09-25); the data is a local CSV fixture set, not live market data. No draft saved, no order placed.\n\n**Current allocation (snapshot as of 2026-09-25, portfolio value $1,000,000):**\n\n- Harbor Infrastructure Notes (defensive sleeve): 45.0% ($450k)\n- Orbit Clinical Software Basket (growth sleeve): 35.0% ($350k)\n- Reserve Treasury Proxy (liquidity sleeve): 20.0% ($200k)\n\nCurrent scenario returns: base 7.75%, upside 13.75%, downside -14.5%.\n\n**Analyst report inputs (all dated 2026-09-25):**\n\n- FIC-REPORT-01 \u2014 Harbor (Fictional Credit Desk): **medium** confidence. Base 5.0%, upside 8.0%, downside -9.0%. Thesis: contracted infrastructure revenue supports coupon coverage. Risk: refinancing costs could compress coverage.\n- FIC-REPORT-02 \u2014 Orbit (Fictional Software Desk): **low** confidence. Base 14.0%, upside 27.0%, downside -31.0%. Thesis: enterprise renewal growth could support expansion. Risk: concentration and implementation delays could reduce renewals.\n- FIC-REPORT-03 \u2014 Reserve (Fictional Treasury Desk): high confidence. Base 3.0%.\n\n**Highest-scoring candidate (objective score 3.11, probability-weighted return 4.98%):**\n\n- Harbor 35% \u2192 Orbit 45% \u2192 Reserve 20%\n- Scenario returns: base 8.65%, upside 15.65%, downside -16.7%\n- One-way turnover: 10.0% (within the mandate's 15% cap)\n\nThis is the top of the 5% grid (20 feasible candidates) evaluated against the written mandate: defensive 30\u201355%, growth 20\u201345%, liquidity 15\u201330%, downside floor -18%.\n\n**Downside tradeoff:** Rebalancing from the current 45/35/20 split to 35/45/20 trades higher expected upside (base return 7.75% \u2192 8.65%, upside 13.75% \u2192 15.65%) against a deeper tail: the downside scenario deteriorates from -14.5% to -16.7%, i.e. 2.2 percentage points worse. That's driven by Orbit's low-confidence -31% downside case versus Harbor's -9%. The candidate sits comfortably above the -18% floor (1.3 points of slack), but the mandate's objective function deliberately penalizes the downside tail at 0.10 per point, so the score gain comes from probability-weighted return (4.98%) outweighing the extra tail risk. In plain terms: you're accepting a meaningfully larger downside loss in a -16.7% scenario to lift the expected return, and the Orbit position is the source of that extra risk.\n\n**Data source:** All reads returned `integration: local_csv_fixture` \u2014 the portfolio, analyst reports, and scenario comparison all came from **local CSV fixture files** (shared snapshot hash 7ca609...cac32). There was no Google Sheets download or live Sheet read in this session. The candidate is a draft for human review only.",
+  "tool_names": [
+    "mcp__finance_workstation__read_portfolio",
+    "mcp__finance_workstation__read_analyst_reports",
+    "mcp__finance_workstation__compare_scenarios",
+    "mcp__finance_workstation__compare_scenarios"
+  ],
+  "tool_result_sha256": [
+    "1703d0ad9f97705a36803fb1d6fc9368bf7eac728d50614c1efe89324d89bd4c",
+    "b0560b69efac13714823cbcb9bec3ef8042c91eb35cd25d1596394ecb7b0efc2",
+    "610b3103f1a2a561fcd9d3bf03d0399ebbb8c621dc7f46ddeaef9a4f77aea575",
+    "1c6c6e00f8ea80289ebca188dda04323726b63d2b9f3cca98fe33e6fefdc4fa0"
+  ],
+  "snapshot_sha256": "7ca6093bd3fe8d1b6ce5219b8a4ec0531a8ba282e775ab78596fa0e9a74cac32",
+  "candidate": {
+    "weights_pct": {
+      "FCT-HARBOR": 35,
+      "FCT-ORBIT": 45,
+      "FCT-RESERVE": 20
+    },
+    "scenario_returns_pct": {
+      "base": 8.65,
+      "upside": 15.65,
+      "downside": -16.7
+    },
+    "one_way_turnover_pct": 10.0,
+    "probability_weighted_return_pct": 4.98,
+    "objective_score": 3.11
+  },
+  "checks": {
+    "required_finance_tools_used": true,
+    "no_write_tool_called": true,
+    "one_source_snapshot": true,
+    "current_weights_match_tool": true,
+    "candidate_weights_match_tool": true,
+    "downside_tradeoff_matches_tool": true,
+    "report_ids_dates_confidence_cited": true,
+    "local_fixture_disclosed": true,
+    "no_live_sheet_claim": true,
+    "no_order_or_draft_claim": true
+  },
+  "duplicate_comparison_call": 1,
+  "slack_message_url": "https://app.slack.com/client/T09PDJJ3U95/D0C4B99LSRZ"
+}
