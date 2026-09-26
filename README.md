@@ -1,6 +1,8 @@
 # Fictional finance workstation
 
-The demo lets a person ask a Hermes agent in Slack about a fictional portfolio. Hermes calls four narrow tools, and Ternary Bonsai 2 27B supplies the explanation. The tools read holdings and analyst assumptions, compare feasible allocations against a written mandate, and save a review draft only when asked. No tool places trades or updates a real portfolio.
+The demo lets a person ask a Hermes agent about a fictional portfolio. Hermes calls four narrow tools, and Ternary Bonsai 2 27B supplies the explanation. The tools read holdings and analyst assumptions, compare feasible allocations against a written mandate, and save a review draft only when asked. No tool places trades or updates a real portfolio.
+
+The [public reproduction guide](https://gist.github.com/ChaiWithJai/9d5cfd1583f66661a67ae5cca3801f8d) gives the short command sequence. The captured run used the CLI and local CSV files, not a connected Slack or Google Sheets session.
 
 The included data represents a fictional $1 million portfolio as of September 25, 2026. All asset names and report IDs begin with `FCT` or `FIC`. The local CSV files are the default source. A Google Sheets download is available when a user supplies a workbook and an OAuth token. The demo does not claim that the included fixture is a live Google Sheet.
 
