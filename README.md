@@ -4,7 +4,7 @@ Build a portfolio review agent that compares allocations against a written manda
 
 The example starts with a $1 million portfolio and asks whether shifting ten percentage points from Harbor to Orbit improves its outlook. The candidate improves the assumed base return from 7.75% to 8.65%, while worsening the downside from -14.50% to -16.70%. The agent must explain both changes and cite the report behind the more uncertain assumption.
 
-The included holdings and reports are sample data. The tools can save a review draft, but they cannot submit an order. Local CLI and Slack sessions have been captured; the optional Google Sheets importer has parser tests but has not been exercised against an authenticated account.
+The included holdings and reports are sample data. The tools can save a review draft, but they cannot submit an order. Local CLI and Slack sessions have been captured; an authenticated Sheet import and subsequent Slack review are recorded in the [connected verification](docs/google-verification.md).
 
 ## Run the portfolio calculation
 
