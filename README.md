@@ -52,7 +52,7 @@ hermes --profile finance-workstation chat --oneshot -Q -q \
   "Compare the current portfolio with the best allocation under the mandate. Explain the change in base and downside returns, and cite the analyst assumptions that require review."
 ```
 
-Hermes should call `read_portfolio`, `read_analyst_reports` and `compare_scenarios`. Its explanation should preserve the numbers above and identify the low-confidence Orbit report, `FIC-REPORT-02`. The [captured answer](evidence/sessions/slack-live-evidence.json) provides an example of the tool sequence and resulting explanation.
+Hermes should call `read_portfolio`, `read_analyst_reports` and `compare_scenarios`. Its explanation should preserve the numbers above and identify the low-confidence Orbit report, `FIC-REPORT-02`. A [recorded Slack run](evidence/sessions/slack-live-evidence.json) shows this tool sequence using the A+ Client Commitments profile and bundled CSVs. It is separate from the local profile created above.
 
 To save a candidate, ask the agent to prepare a review draft for a named reviewer. The `write_review_draft` tool checks the source snapshot before writing a JSON file under `drafts/`, with status `pending_human_review`. Changing the source requires a fresh comparison.
 
