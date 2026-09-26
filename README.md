@@ -33,6 +33,8 @@ One direct Hermes and Bonsai run used the three read tools and produced the expe
 
 A second run came through a Slack DM to the existing Client Commitments bot, whose Hermes profile exposed this repository's finance MCP tools alongside its legal tools. [The Slack session](slack-live-evidence.json) records the prompt, tool calls, final answer, source hash and main-turn usage. [The screenshot of the allocation and reports](slack-allocation-review.jpg) and [the screenshot of its downside and source disclosure](slack-scenario-review.jpg) show the actual Slack reply, reframed to keep unrelated workspace content out of the image. [The MLflow run](http://127.0.0.1:5210/#/experiments/41/runs/0944b153dd22461796832768a3aba8a5) passed ten narrow checks against that one session. The model called the comparison tool twice with the same arguments, so the 101.5-second response has an avoidable extra tool turn. No draft or order tool ran.
 
+[The measured call breakdown](PERFORMANCE.md) separates model latency from tool execution and defines a matched harness test for the duplicate call. It does not claim a speedup from the present evidence.
+
 [Evidence notes](EVIDENCE.md) distinguish these observed runs from broader model reliability. The fixture is suitable for demonstrating the workflow, not for investment advice or an empirical alpha claim.
 
 The personal demo workspace also has a native Google Sheet with the same fictional portfolio and analyst-report rows. The [portfolio screenshot](google-sheet-portfolio.jpg) and [analyst-report screenshot](google-sheet-reports.jpg) show that Sheet. Both demonstrated Hermes runs read the bundled CSV fixture; the Sheet is not evidence of an authenticated agent read.
