@@ -20,6 +20,32 @@ SCHEMA = {
 }
 
 
+def normalize_tab(values, tab, expected):
+    """Accept a small title block, then convert formatted Sheet values to CSV units."""
+    header_at = next((i for i, row in enumerate(values[:10])
+                      if row[:len(expected)] == expected and not any(x.strip() for x in row[len(expected):])), None)
+    if header_at is None:
+        raise ValueError(f"{tab} header differs from the expected schema")
+    rows = []
+    for raw in values[header_at + 1:]:
+        if not any(str(cell).strip() for cell in raw):
+            continue
+        if any(str(cell).strip() for cell in raw[len(expected):]):
+            raise ValueError(f"{tab} has data beyond the expected columns")
+        row = [str(cell).strip() for cell in raw[:len(expected)]]
+        row += [""] * (len(expected) - len(row))
+        if tab == "Portfolio":
+            for index in (3, 4):
+                row[index] = row[index].replace("$", "").replace(",", "")
+        else:
+            for index in (4, 5, 6):
+                row[index] = row[index].removesuffix("%").replace(",", "")
+        rows.append(row)
+    if not rows:
+        raise ValueError(f"{tab} contains no rows")
+    return rows
+
+
 def fetch_tab(spreadsheet_id, token, tab):
     span = urllib.parse.quote(f"'{tab}'!A1:Z1000", safe="")
     url = f"https://sheets.googleapis.com/v4/spreadsheets/{urllib.parse.quote(spreadsheet_id, safe='')}/values/{span}"
@@ -36,11 +62,7 @@ def main():
     downloaded = {}
     for tab, (filename, expected) in SCHEMA.items():
         values = fetch_tab(spreadsheet_id, token, tab)
-        if not values or values[0][:len(expected)] != expected:
-            raise ValueError(f"{tab} header differs from the expected schema")
-        rows = [row + [""] * (len(expected) - len(row)) for row in values[1:] if any(cell.strip() for cell in row)]
-        if not rows or any(len(row) != len(expected) for row in rows):
-            raise ValueError(f"{tab} contains no rows or has extra columns")
+        rows = normalize_tab(values, tab, expected)
         stream = io.StringIO()
         writer = csv.writer(stream)
         writer.writerow(expected)
