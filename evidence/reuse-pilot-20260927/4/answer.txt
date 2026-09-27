@@ -1,0 +1,3 @@
+Current (45/35/20 Harbor/Orbit/Reserve): base 7.75%, downside -14.5%. Best feasible candidate (35/45/20): base 8.65%, downside -16.7%, 10% turnover, meeting sleeve bounds, the -18% downside floor and 15% turnover cap.
+
+It trades ~100 bps of downside for ~90 bps of base return by shifting 10 points from Harbor into Orbit. The candidate relies on Orbit's low-confidence 14% base return, FIC-REPORT-02 (2026-09-25): enterprise renewals could be dented by concentration and implementation delays, with a -31% downside. That low-confidence growth thesis is what the reviewer should check before approval. No draft saved; this is a fictional sample for review only.

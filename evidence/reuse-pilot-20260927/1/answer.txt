@@ -1,0 +1,7 @@
+This is sample fictional data. Current: 45% Harbor Infrastructure (FIC-REPORT-01), 35% Orbit Clinical Software (FIC-REPORT-02), 20% Reserve Treasury (FIC-REPORT-03); base 7.75%, downside -14.5%.
+
+Best feasible candidate: 35% Harbor, 45% Orbit, 20% Reserve — a 10-point shift, within the 5% grid and sleeve bounds (defensive 30–55, growth 20–45, liquidity 15–30, turnover cap 15). Base rises to 8.65%; downside worsens to -16.7%.
+
+The reviewer should check the low-confidence assumption: Orbit's 14% base return (FIC-REPORT-02, low confidence), which rests on enterprise renewal growth and is the driver of the candidate's edge. Downside case: if renewal growth disappoints, Orbit's -31% return makes the portfolio's -16.7% tail worse than the current -14.5%.
+
+Objective score 3.11 ranks this candidate; it is not a realized-return prediction.

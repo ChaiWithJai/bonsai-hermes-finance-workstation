@@ -101,6 +101,14 @@ def candidates(state: dict) -> list[dict]:
                                        tuple(c["weights_pct"][k] for k in sorted(c["weights_pct"]))))
 
 
+def scenario_changes(current: dict, candidate: dict) -> dict:
+    """Return signed candidate-minus-current changes with explicit units."""
+    return {scenario: {
+        "percentage_points": round(candidate[scenario] - current[scenario], 4),
+        "basis_points": round((candidate[scenario] - current[scenario]) * 100, 2),
+    } for scenario in ("base", "upside", "downside")}
+
+
 def execute(name: str, args: dict) -> dict:
     state = snapshot()
     common = {"demo": True, "integration": state["integration"], "source": state["source"],
@@ -123,6 +131,7 @@ def execute(name: str, args: dict) -> dict:
         return {**common, "current_scenario_returns_pct": current,
                 "current_weights_pct": {r["asset_id"]: r["weight_pct"] for r in state["holdings"]},
                 "candidate": best, "feasible_grid_candidates": len(ranked),
+                "candidate_minus_current": scenario_changes(current, best["scenario_returns_pct"]),
                 "methodology": state["mandate"], "decision_state": "draft_for_human_review"}
     if name == "write_review_draft":
         expected = args.get("expected_snapshot_sha256")
