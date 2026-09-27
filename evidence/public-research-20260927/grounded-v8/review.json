@@ -1,0 +1,15 @@
+{
+  "session_id": "20260927_010218_27a3a1",
+  "prompt": "Find Cloudflare\u2019s current Enterprise Subscription Agreement with web_search, then read the official page with web_extract. For a software analyst, identify one practical question from Section 2.3 about load testing. Include the URL and section number. Use only text visible in the extracted page. Do not discuss SLAs, credits, remedies, portfolio holdings, or other sections. Do not save a draft. Answer in at most 80 words.",
+  "source_url": "https://www.cloudflare.com/enterpriseterms/",
+  "source_section": "2.3(j)",
+  "source_meaning": "Customer may not probe, scan or test Services vulnerabilities, including penetration, stress or load testing, unless expressly permitted by Documentation or Order Form, without prior written Cloudflare consent.",
+  "agent_review": "The 41-word answer states the consent question and preserves the Documentation and Order Form exceptions. It adds no SLA claim. This is one source-grounded CLI answer, not a reliability estimate or a Slack run.",
+  "web_search_calls": 6,
+  "web_extract_calls": 2,
+  "visible_extractions": 1,
+  "unreadable_spillovers": 1,
+  "session_export_sha256": "efab16d3295c80259a306f816e3af304608673901f1e0972bb20bf86df30cd29",
+  "citation_gate_passed": true,
+  "scope": "One bounded public-source question. No portfolio calculation or draft write."
+}

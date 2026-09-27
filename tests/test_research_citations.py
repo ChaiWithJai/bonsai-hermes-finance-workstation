@@ -34,6 +34,14 @@ class ResearchCitationTests(unittest.TestCase):
         record["messages"][-1]["content"] += " extra" * 160
         self.assertFalse(checker.review(record, "https://example.com/terms/", 150)["checks"]["within_word_limit"])
 
+    def test_ignores_spillover_preview_but_uses_visible_retry(self):
+        record = session("2.3", "2.3")
+        record["messages"].insert(1, {"role": "tool", "tool_call_id": "call-1",
+            "content": '<untrusted_tool_result source="web_extract">\n<persisted-output>Preview: {"results": [truncated]\n</persisted-output>\n</untrusted_tool_result>'})
+        result = checker.review(record, "https://example.com/terms/", 150)
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["unreadable_extractions"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

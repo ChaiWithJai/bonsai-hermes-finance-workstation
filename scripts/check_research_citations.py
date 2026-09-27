@@ -15,12 +15,19 @@ from pathlib import Path
 SECTION = re.compile(r"\bSection\s+(\d+(?:\.\d+)*)\b", re.IGNORECASE)
 
 
-def extract_payload(text: str) -> dict:
+def extract_payload(text: str) -> dict | None:
+    # A spillover preview is not the page the model read. Count it only if a
+    # later tool result exposes the relevant text in the conversation.
+    if "<persisted-output>" in text:
+        return None
     start = text.find("{")
     end = text.rfind("</untrusted_tool_result>")
     if start < 0:
-        raise ValueError("Missing web_extract JSON result")
-    return json.loads(text[start:end if end >= 0 else None].strip())
+        return None
+    try:
+        return json.loads(text[start:end if end >= 0 else None].strip())
+    except json.JSONDecodeError:
+        return None
 
 
 def review(session: dict, url: str, max_words: int) -> dict:
@@ -30,10 +37,15 @@ def review(session: dict, url: str, max_words: int) -> dict:
         for call in message.get("tool_calls") or []:
             calls[call["id"]] = call.get("function", {}).get("name")
     extracted = []
+    unreadable_extractions = 0
     for message in messages:
         if message.get("role") != "tool" or calls.get(message.get("tool_call_id")) != "web_extract":
             continue
-        for item in extract_payload(message.get("content", "")).get("results", []):
+        payload = extract_payload(message.get("content", ""))
+        if payload is None:
+            unreadable_extractions += 1
+            continue
+        for item in payload.get("results", []):
             if item.get("url", "").rstrip("/") == url.rstrip("/") and not item.get("error"):
                 extracted.append(item.get("content", ""))
     answers = [message.get("content", "") for message in messages
@@ -55,7 +67,8 @@ def review(session: dict, url: str, max_words: int) -> dict:
     }
     return {"session_id": session.get("id"), "source_url": url,
             "cited_sections": sections, "missing_sections": missing,
-            "extractions": len(extracted), "answer_words": words,
+            "extractions": len(extracted), "unreadable_extractions": unreadable_extractions,
+            "answer_words": words,
             "checks": checks, "passed": all(checks.values()),
             "scope": "Section presence and format only; human review of meaning is still required."}
 
