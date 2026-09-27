@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 67.69,
+  "prompt": "Find one primary-source Cloudflare page about enterprise customer obligations or service commitments. Use web search, read the selected page, and give its URL and one issue a software analyst should check. Treat it as industry context, not coverage of the sample holdings. Do not save a draft. Keep the answer under 150 words.",
+  "profile": "portfolio-public-research-v3-20260927",
+  "model_path": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+  "runtime_path": "llama-server",
+  "sampling_source": "scripts/start_model.sh",
+  "hermes_revision": "59004a62356f3a4697ab0fe8ad5086d2b405e2a6"
+}

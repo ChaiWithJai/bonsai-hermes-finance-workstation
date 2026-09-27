@@ -33,3 +33,7 @@ Source changes require a fresh comparison before saving a draft. Missing or inva
 ## Design choice
 
 A spreadsheet already provides a good place to maintain holdings and assumptions. This example adds conversational comparison and a saved decision context without asking the model to do portfolio arithmetic. A fixed report is simpler for a fixed question; the agent is useful when the manager wants to change a constraint, question an assumption or follow up on a candidate. The [architecture walkthrough](architecture.md) explains where those responsibilities live.
+
+## Public research
+
+The optional research profile adds Hermes' native search and page extraction tools. Public sources stay separate from the portfolio snapshot and mandate. The model can cite a source in its explanation, but the Python calculation continues to use the validated analyst inputs. See [the research setup](integrations.md#add-public-research) for provider selection and query scope.

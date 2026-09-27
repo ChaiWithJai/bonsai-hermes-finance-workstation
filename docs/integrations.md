@@ -1,6 +1,6 @@
-# Optional Google Sheets and Slack connections
+# Google Sheets, Slack and public research
 
-The local run in the [README](../README.md) uses the bundled portfolio and analyst reports. The two connections below are independent. Google Sheets downloads a validated input snapshot for the finance tools. Slack lets an authorized user ask Hermes to use those tools through a bot.
+The local run in the [README](../README.md) uses the bundled portfolio and analyst reports. The connections below are optional. Google Sheets downloads a validated input snapshot for the finance tools. Slack lets an authorized user ask Hermes to use those tools through a bot.
 
 ## Read a Google Sheet into the local tools
 
@@ -38,7 +38,7 @@ The tools read the downloaded snapshot, not the live workbook on every question.
 
 ## Chat with the agent in Slack
 
-First complete the local Hermes run from the [README](../README.md), using the `finance-workstation` profile. Create a new Slack app from [config/slack-manifest.json](../config/slack-manifest.json) in Slack's app management page. The manifest enables Socket Mode, the bot's Messages tab, required events and bot scopes. In the new app's **Basic Information**, create an app-level token with `connections:write`; its value starts with `xapp-`. Install the app to the workspace and copy its bot token, which starts with `xoxb-`. Copy the Slack Member ID of each person allowed to DM the bot.
+First complete the local Hermes run in [setup](setup.md), using the `finance-workstation` profile. Create a new Slack app from [config/slack-manifest.json](../config/slack-manifest.json) in Slack's app management page. The manifest enables Socket Mode, the bot's Messages tab, required events and bot scopes. In the new app's **Basic Information**, create an app-level token with `connections:write`; its value starts with `xapp-`. Install the app to the workspace and copy its bot token, which starts with `xoxb-`. Copy the Slack Member ID of each person allowed to DM the bot.
 
 Copy the profile's generated `.env.example` to `.env`, then fill these three fields in `~/.hermes/profiles/finance-workstation/.env`:
 
@@ -59,4 +59,21 @@ hermes --profile finance-workstation gateway run
 
 Leave the foreground gateway running while testing. If this profile already has an installed gateway service, use `hermes --profile finance-workstation gateway restart` after changing its `.env` or tool configuration, then check `gateway status` again. Do not start a second forced gateway on the same bot token.
 
-Open the bot's Messages tab in Slack and send the same portfolio question used in the local run. The reply should give the current and candidate weights, explain the base and downside change, identify the analyst reports, and state whether the source was the bundled sample data or a downloaded Sheet snapshot. The bot can save a local review draft when asked; it cannot place an order. The [captured Slack session](../evidence/sessions/slack-live-evidence.json) used an existing shared bot profile and the bundled sample data, so it verifies a Slack exchange but is not a test of the separate app or authenticated Sheet import described here.
+Open the bot's Messages tab in Slack and send the same portfolio question used in the local run. The reply should give the current and candidate weights, explain the base and downside change, identify the analyst reports, and state whether the source was the bundled sample data or a downloaded Sheet snapshot. The bot can save a local review draft when asked; it cannot place an order. The [recorded Slack review](google-verification.md) used a downloaded Sheet snapshot and saved a candidate for Anthony. It used the existing demo bot, so it does not verify installation of a separate Slack app.
+
+## Add public research
+
+Create a separate profile with Hermes' native search and page-reading tools:
+
+```sh
+python scripts/setup_profile.py --profile portfolio-research --web-research
+hermes --profile portfolio-research chat
+```
+
+The option adds the `web` toolset to CLI and Slack and selects Exa's free search provider and Firecrawl's free page extraction provider. It uses the [Hermes web tools](https://github.com/NousResearch/hermes-agent/blob/59004a62356f3a4697ab0fe8ad5086d2b405e2a6/tools/web_tools.py) supported by the recorded installation. Provider availability and free-tier limits can change; `hermes --profile portfolio-research tools` lets you choose another provider.
+
+Ask for a primary-source page about a public issuer's service commitments, then ask which assumption an analyst should investigate. The agent should read the selected page and cite its URL. Search queries go to the selected provider, so the [research instructions](../config/research.md) keep holdings, weights and internal analyst text out of queries.
+
+Public sources provide context for the reviewer. They do not change the sample return assumptions or saved candidate; update and validate the input snapshot before recalculating. The profile created without `--web-research` keeps its original tool access.
+
+The [recorded research runs](../evidence/public-research-20260927/README.md) show the provider change and remaining answer-quality issue. Firecrawl returned the relevant sections, while the answer still needs review for precise fee-cap wording.

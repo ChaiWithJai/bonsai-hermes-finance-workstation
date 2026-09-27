@@ -38,3 +38,21 @@ class ProfileSetupTest(unittest.TestCase):
             reply = json.loads(result.stdout)["result"]
             self.assertFalse(reply.get("isError"), reply)
             self.assertIn("selected_snapshot", reply["content"][0]["text"])
+
+    def test_web_research_is_explicit_and_keeps_finance_tools(self):
+        with tempfile.TemporaryDirectory() as folder:
+            env = {**os.environ, 'HOME': folder, 'FINANCE_PYTHON': sys.executable}
+            for name, flags in [('local-only', []), ('with-research', ['--web-research'])]:
+                subprocess.run([sys.executable, str(ROOT / 'scripts/setup_profile.py'), '--profile', name, *flags], env=env, check=True, capture_output=True)
+            profiles = Path(folder) / '.hermes/profiles'
+            local = json.loads((profiles / 'local-only/config.yaml').read_text())
+            research = json.loads((profiles / 'with-research/config.yaml').read_text())
+            self.assertEqual(local['platform_toolsets']['cli'], ['finance'])
+            self.assertNotIn('web', local)
+            for platform in ('cli', 'slack'):
+                self.assertEqual(research['platform_toolsets'][platform], ['finance', 'web'])
+            self.assertEqual(research['web']['provider_tier'], {'exa': 'free', 'firecrawl': 'free'})
+            self.assertEqual(research['web']['extract_backend'], 'firecrawl')
+            self.assertEqual(research['mcp_servers']['finance'], local['mcp_servers']['finance'])
+            self.assertIn('Public research does not change the mandate', (profiles / 'with-research/SOUL.md').read_text())
+            self.assertNotIn('Public research does not change the mandate', (profiles / 'local-only/SOUL.md').read_text())
