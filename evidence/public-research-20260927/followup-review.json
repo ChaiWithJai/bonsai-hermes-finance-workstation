@@ -1,0 +1,32 @@
+{
+  "review_type": "agent source-grounding review; no human approval",
+  "prompt": "Find one primary-source Cloudflare page about enterprise customer obligations or service commitments; use search and page extraction; answer in under 150 words.",
+  "primary_source": "https://www.cloudflare.com/enterpriseterms/",
+  "runs": [
+    {
+      "profile": "portfolio-public-research-v4-20260927",
+      "session_id": "20260927_002018_1cf1af",
+      "result": "fail",
+      "reason": "The answer exceeded 150 words and attributed the exclusive SLA remedy to Section 5 rather than Section 4."
+    },
+    {
+      "profile": "portfolio-public-research-v5-20260927",
+      "session_id": "20260927_002246_b92586",
+      "result": "fail",
+      "reason": "Section 2.3 was in the extraction, but the answer appended an unsupported claim about SLA credits."
+    },
+    {
+      "profile": "portfolio-public-research-v6-20260927",
+      "session_id": "20260927_002427_a07b5c",
+      "result": "fail",
+      "reason": "The answer cited Section 11.2 although it was absent from the extracted page; the extraction was truncated."
+    },
+    {
+      "profile": "portfolio-public-research-v7-20260927",
+      "session_id": "20260927_002633_170b57",
+      "result": "fail",
+      "reason": "The answer cited Section 5.2, which is correct on the official page but absent from both extracted tool results. The model requested 10000 and 15000 characters despite the profile's 100000-character instruction."
+    }
+  ],
+  "conclusion": "Do not present the optional public-research answer as source-verified. The core portfolio calculation and saved-draft demo are separate. A tool-level full-source read or a publication gate is needed before relying on this optional path."
+}

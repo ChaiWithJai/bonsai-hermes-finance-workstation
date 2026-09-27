@@ -1,0 +1,5 @@
+Primary source: Cloudflare Enterprise Subscription Agreement, effective September 12, 2025, https://www.cloudflare.com/enterpriseterms/ — industry context only, not coverage of the sample holdings.
+
+Issue to check: Section 11.2 makes subscriptions auto-renew unless either party gives written notice at least two months before the term ends. An analyst should confirm whether the customer's procurement workflow can reliably produce that advance notice, since a missed window locks in the next renewal term and pricing.
+
+No draft was saved.

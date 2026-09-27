@@ -1,0 +1,5 @@
+Primary source: https://www.cloudflare.com/enterpriseterms/ (Cloudflare Enterprise Subscription Agreement, effective September 12, 2025). This is public industry context, not coverage of the sample holdings, and no draft was saved.
+
+Issue for a software analyst to check: Section 2.3 (Restrictions and Acceptable Use) bars Customer from using the Service except for internal business purposes, from probing, scanning, or testing any vulnerability of the Services — including penetration, stress, or load testing — without prior written Cloudflare consent, and from publishing performance or benchmark tests other than for internal use. If your integration work involves load testing Cloudflare infrastructure or benchmarking it against competitors, verify in the Order Form whether written consent or an exception applies before testing, since the SLA credits (the sole remedy for service failures, per the referenced enterprise SLA) won't compensate you for breaches of these obligations.
+
+Word count: ~115.
