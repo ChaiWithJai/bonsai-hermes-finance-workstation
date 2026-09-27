@@ -1,0 +1,11 @@
+{
+  "review_type": "agent review against saved deterministic tool results",
+  "decision": "Do not adopt the reuse instruction; this pilot does not establish an improvement.",
+  "cases": [
+    {"case": 1, "accepted_for_requested_comparison": true, "notes": "Weights, base/downside returns, low-confidence assumption and report ID agree with tool output. No write tool called."},
+    {"case": 2, "accepted_for_requested_comparison": true, "notes": "Required comparison is correct, but all three read-only tools were repeated despite the intervention."},
+    {"case": 3, "accepted_for_requested_comparison": true, "notes": "Required comparison agrees with tool output. No repeated calls or writes."},
+    {"case": 4, "accepted_for_requested_comparison": false, "error_span": "It trades ~100 bps of downside for ~90 bps of base return", "correction": "Downside worsens by 220 basis points, from -14.5% to -16.7%. Base improves by 90 basis points."}
+  ],
+  "limits": ["Two samples per variant of one development request", "No fixed seed", "Resident-server cache state may affect timing", "No human acceptance or savings claim", "Hermes cached-token totals require interpretation before use in cost accounting"]
+}

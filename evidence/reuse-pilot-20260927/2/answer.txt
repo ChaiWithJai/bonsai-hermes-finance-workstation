@@ -1,0 +1,8 @@
+Sample data, from the local CSV fixture.
+
+Current (2026-09-25): Harbor 45%, Orbit 35%, Reserve 20%. Base 7.75%, downside -14.5%.
+Best candidate: Harbor 35%, Orbit 45%, Reserve 20%. Base 8.65%, downside -16.7%. Turnover 10%, within the 15% cap and sleeve bounds; meets the mandate.
+
+Reason: shifting 10 pts from Harbor to Orbit raises expected return despite a steeper downside.
+
+Check: the low-confidence assumption is FIC-REPORT-02 (Orbit), which cites enterprise renewal growth but flags concentration and implementation delays (base 14.0%, downside -31.0%). If renewals disappoint, the -16.7% downside is driven by that sleeve. Harbor (FIC-REPORT-01, medium confidence) and Reserve (FIC-REPORT-03, high confidence) are steadier anchors.

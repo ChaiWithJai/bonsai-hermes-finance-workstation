@@ -1,0 +1,26 @@
+{
+  "model_sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+  "runtime_sha256": "1ad69ebaada923760c52c1dc50daf198a22c2adb4a9dcccd25779fa7079f353b",
+  "hardware": "Apple M5 Pro",
+  "memory_bytes": 51539607552,
+  "hermes_revision": "59004a62356f3a4697ab0fe8ad5086d2b405e2a6",
+  "source_hashes": {
+    "src/finance_workstation/sample_data/analyst_reports.csv": "79d0918d08dbb75999c3530c6e481e2ce389fc12028d4524987ed2ea5d45cec1",
+    "src/finance_workstation/sample_data/portfolio.csv": "3ab32dd063afad1494a6527ec0ce18718717b51fa95420a4ad8476c2a2184d21",
+    "src/finance_workstation/sample_data/mandate.json": "da435a370d3aeab2e84206823aa87bf2d347152e293f31d399f3a2c9010a4da4",
+    "scripts/start_model.sh": "8bbaed925bd1e4c74ef2a2cee63e226afda41696cd450f78736be575f5dabfa2",
+    "src/finance_workstation/tools.py": "2da5f0dc92e9e4842db137ce9a8fb404ce5f8a945b2f2078887ef2136c47d636"
+  },
+  "intervention": "Explicit signed scenario deltas in tool result and instruction to use them; baseline reuse instruction unchanged.",
+  "changed_hashes": {
+    "outputs/four-demos/finance-workstation/src/finance_workstation/tools.py": "f48b7690ac5b1304030514194519dc104364d9714dc0cbe455f383959a7ceade",
+    "outputs/four-demos/finance-workstation/config/SOUL.md": "08823315129fc02a4e0c05d19d9a111e7fe842d5290079597f104e7d04f9eebd",
+    "/Users/jaibhagat/.hermes/profiles/finance-delta-replay-20260927/config.yaml": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c"
+  },
+  "acceptance": [
+    "Correct weights and scenario levels",
+    "If differences are stated, +90 basis points base and -220 basis points downside",
+    "Cite low confidence report ID",
+    "No draft write"
+  ]
+}

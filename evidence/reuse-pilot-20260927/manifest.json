@@ -1,0 +1,48 @@
+{
+  "prompt": "Compare the current portfolio with the best feasible candidate under the mandate. Give the weights, base and downside returns, and the low-confidence assumption the reviewer should check. Cite the report ID. Do not save a draft. Keep the answer under 150 words.",
+  "order": [
+    {
+      "profile": "finance-reuse-pilot-1-20260927",
+      "variant": "baseline",
+      "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+      "instructions_sha256": "714df9e2f4db01ec8c65955a6b00e5af1eb288ec1968174865c73e5077214706"
+    },
+    {
+      "profile": "finance-reuse-pilot-2-20260927",
+      "variant": "reuse",
+      "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+      "instructions_sha256": "9baa9291f3fa19fcac41fb88a2c99a92ef16e1fb60c3676b748f36bef3072f63"
+    },
+    {
+      "profile": "finance-reuse-pilot-3-20260927",
+      "variant": "reuse",
+      "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+      "instructions_sha256": "9baa9291f3fa19fcac41fb88a2c99a92ef16e1fb60c3676b748f36bef3072f63"
+    },
+    {
+      "profile": "finance-reuse-pilot-4-20260927",
+      "variant": "baseline",
+      "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+      "instructions_sha256": "714df9e2f4db01ec8c65955a6b00e5af1eb288ec1968174865c73e5077214706"
+    }
+  ],
+  "intervention": "Reuse the result of a successful read-only tool call when its arguments and source inputs have not changed during this request. Do not repeat an identical successful comparison to restate its result. Retry failed calls only when the error is recoverable.",
+  "acceptance": [
+    "Durable final answer",
+    "Correct current and candidate weights",
+    "Base 7.75 to 8.65 percent; downside -14.5 to -16.7 percent",
+    "Low confidence Orbit assumption and report ID",
+    "No draft write invoked"
+  ],
+  "metrics": [
+    "wall time",
+    "tool calls and repeated identical calls",
+    "model usage from Hermes session records"
+  ],
+  "limits": [
+    "Two runs per variant of one development request; not held-out validation",
+    "No fixed seed; nondeterministic sampling",
+    "Same resident server; prompt cache state may affect latency",
+    "No claim of runtime parameter optimum or hosted savings"
+  ]
+}

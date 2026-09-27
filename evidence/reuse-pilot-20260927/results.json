@@ -1,0 +1,114 @@
+[
+  {
+    "profile": "finance-reuse-pilot-1-20260927",
+    "variant": "baseline",
+    "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+    "instructions_sha256": "714df9e2f4db01ec8c65955a6b00e5af1eb288ec1968174865c73e5077214706",
+    "exit_code": 0,
+    "elapsed_seconds": 39.8,
+    "tool_calls": [
+      {
+        "name": "mcp__finance__read_portfolio",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__compare_scenarios",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__read_analyst_reports",
+        "arguments": "{}"
+      }
+    ],
+    "repeated_calls": 0,
+    "durable_final": true,
+    "answer_words": 119
+  },
+  {
+    "profile": "finance-reuse-pilot-2-20260927",
+    "variant": "reuse",
+    "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+    "instructions_sha256": "9baa9291f3fa19fcac41fb88a2c99a92ef16e1fb60c3676b748f36bef3072f63",
+    "exit_code": 0,
+    "elapsed_seconds": 67.32,
+    "tool_calls": [
+      {
+        "name": "mcp__finance__read_portfolio",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__compare_scenarios",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__read_analyst_reports",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__read_portfolio",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__read_analyst_reports",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__compare_scenarios",
+        "arguments": "{}"
+      }
+    ],
+    "repeated_calls": 3,
+    "durable_final": true,
+    "answer_words": 103
+  },
+  {
+    "profile": "finance-reuse-pilot-3-20260927",
+    "variant": "reuse",
+    "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+    "instructions_sha256": "9baa9291f3fa19fcac41fb88a2c99a92ef16e1fb60c3676b748f36bef3072f63",
+    "exit_code": 0,
+    "elapsed_seconds": 42.78,
+    "tool_calls": [
+      {
+        "name": "mcp__finance__read_portfolio",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__read_analyst_reports",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__compare_scenarios",
+        "arguments": "{}"
+      }
+    ],
+    "repeated_calls": 0,
+    "durable_final": true,
+    "answer_words": 117
+  },
+  {
+    "profile": "finance-reuse-pilot-4-20260927",
+    "variant": "baseline",
+    "config_sha256": "f4e3a822a1cac6e7c0ecc79e8c68a9365b6cfddbe289c42b6a9c5e6e9631d56c",
+    "instructions_sha256": "714df9e2f4db01ec8c65955a6b00e5af1eb288ec1968174865c73e5077214706",
+    "exit_code": 0,
+    "elapsed_seconds": 35.99,
+    "tool_calls": [
+      {
+        "name": "mcp__finance__read_portfolio",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__read_analyst_reports",
+        "arguments": "{}"
+      },
+      {
+        "name": "mcp__finance__compare_scenarios",
+        "arguments": "{}"
+      }
+    ],
+    "repeated_calls": 0,
+    "durable_final": true,
+    "answer_words": 96
+  }
+]

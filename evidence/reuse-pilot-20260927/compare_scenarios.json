@@ -1,0 +1,64 @@
+{
+  "demo": true,
+  "integration": "local_csv_fixture",
+  "source": {
+    "integration": "local_csv_fixture"
+  },
+  "snapshot_sha256": "7ca6093bd3fe8d1b6ce5219b8a4ec0531a8ba282e775ab78596fa0e9a74cac32",
+  "current_scenario_returns_pct": {
+    "base": 7.75,
+    "upside": 13.75,
+    "downside": -14.5
+  },
+  "current_weights_pct": {
+    "FCT-HARBOR": 45.0,
+    "FCT-ORBIT": 35.0,
+    "FCT-RESERVE": 20.0
+  },
+  "candidate": {
+    "weights_pct": {
+      "FCT-HARBOR": 35,
+      "FCT-ORBIT": 45,
+      "FCT-RESERVE": 20
+    },
+    "scenario_returns_pct": {
+      "base": 8.65,
+      "upside": 15.65,
+      "downside": -16.7
+    },
+    "one_way_turnover_pct": 10.0,
+    "probability_weighted_return_pct": 4.98,
+    "objective_score": 3.11
+  },
+  "feasible_grid_candidates": 20,
+  "methodology": {
+    "name": "Fictional balanced portfolio mandate",
+    "currency": "USD",
+    "as_of": "2026-09-25",
+    "grid_step_pct": 5,
+    "sleeve_bounds_pct": {
+      "defensive": [
+        30,
+        55
+      ],
+      "growth": [
+        20,
+        45
+      ],
+      "liquidity": [
+        15,
+        30
+      ]
+    },
+    "max_one_way_turnover_pct": 15,
+    "downside_floor_pct": -18,
+    "objective": "probability_weighted_return_pct - 0.10 * abs(min(downside_return_pct, 0)) - 0.02 * one_way_turnover_pct",
+    "scenario_probabilities": {
+      "base": 0.6,
+      "upside": 0.2,
+      "downside": 0.2
+    },
+    "disclaimer": "Fictional educational data. The output is a candidate for human review, not an investment instruction."
+  },
+  "decision_state": "draft_for_human_review"
+}

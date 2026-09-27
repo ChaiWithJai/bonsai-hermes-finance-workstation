@@ -1,0 +1,7 @@
+This is sample data. Current portfolio: 45% Harbor (defensive), 35% Orbit (growth), 20% Reserve (liquidity), base return 7.75%, downside -14.5%.
+
+Best feasible candidate: 35% Harbor, 45% Orbit, 20% Reserve. It shifts 10% one-way turnover into Orbit, raising base return to 8.65% and upside to 15.65%, but worsening downside to -16.7%. It still meets the mandate: growth within the 20-45% bound, turnover under 15%, and downside above the -18% floor.
+
+Low-confidence assumption to check: the Orbit renewal-growth thesis, FIC-REPORT-02 (Fictional Software Desk, 2026-09-25, confidence low), which drives the +9.0pp return spread versus Harbor. Reviewer should verify whether enterprise renewal growth justifies the extra downside.
+
+Note: this is a ranked candidate, not a realized-return forecast or a submitted trade.

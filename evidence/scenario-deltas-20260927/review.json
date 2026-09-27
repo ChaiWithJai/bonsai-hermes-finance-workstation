@@ -1,0 +1,26 @@
+{
+  "session_id": "20260926_232345_231faa",
+  "review_type": "agent",
+  "checks": {
+    "weights": true,
+    "scenario_levels": true,
+    "signed_changes": true,
+    "report_id": true,
+    "no_write_tool": true
+  },
+  "tool_calls": [
+    {
+      "name": "mcp__finance__read_portfolio",
+      "arguments": "{}"
+    },
+    {
+      "name": "mcp__finance__read_analyst_reports",
+      "arguments": "{}"
+    },
+    {
+      "name": "mcp__finance__compare_scenarios",
+      "arguments": "{}"
+    }
+  ],
+  "limits": "Single development replay, not held-out reliability or speed comparison"
+}

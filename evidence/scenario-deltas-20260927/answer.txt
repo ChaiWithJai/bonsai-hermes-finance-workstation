@@ -1,0 +1,10 @@
+This example uses sample data from an active local CSV snapshot (2026-09-25).
+
+Current: Harbor 45%, Orbit 35%, Reserve 20%; base 7.75%, downside -14.50%.
+Candidate: Harbor 35%, Orbit 45%, Reserve 20%; base 8.65%, downside -16.70%.
+
+Changes: base +0.90 percentage points, upside +1.90, downside -2.20, a worse downside result; one-way turnover 10.0%, under the 15% cap.
+
+The candidate meets the mandate because Harbor 35% is inside the 30–55% defensive band, Orbit 45% is at the growth band's upper bound, Reserve 20% is inside the 15–30% liquidity band, and -16.70% is above the -18% downside floor.
+
+Check this low-confidence assumption before deciding: FIC-REPORT-02, as of 2026-09-25, rates Orbit low confidence, with a -31.00% downside case from concentration and implementation delays.
