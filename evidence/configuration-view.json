@@ -1,0 +1,22 @@
+{
+  "captured_at_utc": "2026-09-27T02:06:49.866196+00:00",
+  "scope": "Installed profile captured after the recorded runs; not an immutable at-run snapshot. Credentials, paths and tool environment omitted.",
+  "profile": "commitments",
+  "profile_file_sha256": "40b477d5c6985e611e4f5ef9af017e5af3054d87b6cf47c4bf63d440b2427210",
+  "model": {
+    "default": "bonsai-ui-public-ternary-bonsai2",
+    "provider": "custom",
+    "base_url": "http://127.0.0.1:5266/v1",
+    "api_mode": "chat_completions",
+    "streaming": false,
+    "context_length": 65536
+  },
+  "agent": {
+    "max_turns": 8,
+    "reasoning_effort": "medium"
+  },
+  "mcp_server_names": [
+    "commitments",
+    "finance_workstation"
+  ]
+}

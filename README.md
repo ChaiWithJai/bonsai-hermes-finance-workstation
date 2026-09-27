@@ -79,3 +79,7 @@ The tests cover scenario arithmetic, allocation constraints, report references, 
 A captured Slack review took 101.5 seconds over four model calls, including a repeated comparison. The [latency breakdown](docs/performance.md) identifies the extra turn and the next controlled test. The [execution record](docs/evidence.md) links the sessions, check results and screenshots without treating a passing check count as a reliability estimate.
 
 Source code lives in `src/`, agent configuration in `config/`, setup and evaluation commands in `scripts/`, and regression tests in `tests/`. The `evidence/` directory preserves the recorded sessions; `docs/` explains integration and measurement details.
+
+## Inspect the installed configuration
+
+The [configuration screenshot and source record](docs/recorded-configuration.md) show the installed Hermes endpoint, context, turn limit and tool servers. Compare them with the setup template when reproducing the run.
