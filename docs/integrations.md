@@ -28,14 +28,9 @@ python -c 'from finance_workstation.tools import snapshot; s = snapshot(); print
 
 The source should report `integration: google_sheets_download`, the workbook ID, and `synced_at`. The hash identifies the validated local snapshot. If the first import fails, run `unset FINANCE_DATA_DIR` to return to the bundled sample. Do not configure Hermes to read an incomplete download. Stop the gateway before refreshing a snapshot in place because the importer replaces the files sequentially.
 
-`scripts/setup_profile.py` writes the Hermes profile to `~/.hermes/profiles/finance-workstation/`. In that profile's `config.yaml`, add the absolute snapshot directory to `mcp_servers.finance.env`:
+With `FINANCE_DATA_DIR` still exported, run `python scripts/setup_profile.py --profile finance-workstation`. Setup saves the absolute snapshot path in the MCP environment. It also preserves `FINANCE_DRAFT_DIR` when supplied, so saved drafts have a stable location independent of the gateway's working directory. Google credentials are not copied into the profile.
 
-```json
-"env": {
-  "FINANCE_MLFLOW_TRACE": "0",
-  "FINANCE_DATA_DIR": "/absolute/path/to/bonsai-hermes-finance-workstation/sheets_snapshot"
-}
-```
+For an existing profile, add the absolute snapshot directory as `FINANCE_DATA_DIR` in `mcp_servers.finance.env` in its `config.yaml`.
 
 Keep any existing `FINANCE_MLFLOW_TRACE` value if you use local MLflow tracing. The `FINANCE_DATA_DIR` value must point to the directory, not a CSV file. A new `hermes --profile finance-workstation chat ...` process will read the changed profile. If a gateway is already serving that profile, restart it with `hermes --profile finance-workstation gateway restart` so its MCP process loads the new environment and data. Then ask Hermes to call `read_portfolio` and report the source integration, sync time, and snapshot hash. Verify those fields against `source.json` and the direct `snapshot()` read above before treating the answer as a Sheet-backed review.
 

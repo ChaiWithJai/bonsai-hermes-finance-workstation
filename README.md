@@ -4,7 +4,7 @@ Build a portfolio review agent that compares allocations against a written manda
 
 The example starts with a $1 million portfolio and asks whether shifting ten percentage points from Harbor to Orbit improves its outlook. The candidate improves the assumed base return from 7.75% to 8.65%, while worsening the downside from -14.50% to -16.70%. The agent must explain both changes and cite the report behind the more uncertain assumption.
 
-The included holdings and reports are sample data. The tools can save a review draft, but they cannot submit an order. Local CLI and Slack sessions have been captured; the optional Google Sheets importer has parser tests but has not been exercised against an authenticated account.
+The included holdings and reports are sample data. The tools can save a review draft, but they cannot submit an order. Local CLI and Slack sessions have been captured; an authenticated Sheet import and subsequent Slack review are recorded in the [connected verification](docs/google-verification.md).
 
 ## Run the portfolio calculation
 
@@ -52,9 +52,9 @@ hermes --profile finance-workstation chat --oneshot -Q -q \
   "Compare the current portfolio with the best allocation under the mandate. Explain the change in base and downside returns, and cite the analyst assumptions that require review."
 ```
 
-Hermes should call `read_portfolio`, `read_analyst_reports` and `compare_scenarios`. Its explanation should preserve the numbers above and identify the low-confidence Orbit report, `FIC-REPORT-02`. The [captured answer](evidence/sessions/slack-live-evidence.json) provides an example of the tool sequence and resulting explanation.
+Hermes should call `read_portfolio`, `read_analyst_reports` and `compare_scenarios`. Its explanation should preserve the numbers above and identify the low-confidence Orbit report, `FIC-REPORT-02`. A [recorded Slack run](evidence/sessions/slack-live-evidence.json) shows this tool sequence using the A+ Client Commitments profile and bundled CSVs. It is separate from the local profile created above.
 
-To save a candidate, ask the agent to prepare a review draft for a named reviewer. The `write_review_draft` tool checks the source snapshot before writing a JSON file under `drafts/`, with status `pending_human_review`. Changing the source requires a fresh comparison.
+To save a candidate, ask the agent to prepare a review draft for a named reviewer. The `write_review_draft` tool checks the source snapshot before writing a JSON file under `drafts/`, with status `pending_human_review`. Changing the source requires a fresh comparison. The tool reads the saved file back before confirming it, and repeating the same request preserves the original draft. A different reviewer requires resolving the existing assignment; the tool rejects that request rather than silently changing reviewers.
 
 ## How the workflow is divided
 
@@ -79,3 +79,7 @@ The tests cover scenario arithmetic, allocation constraints, report references, 
 A captured Slack review took 101.5 seconds over four model calls, including a repeated comparison. The [latency breakdown](docs/performance.md) identifies the extra turn and the next controlled test. The [execution record](docs/evidence.md) links the sessions, check results and screenshots without treating a passing check count as a reliability estimate.
 
 Source code lives in `src/`, agent configuration in `config/`, setup and evaluation commands in `scripts/`, and regression tests in `tests/`. The `evidence/` directory preserves the recorded sessions; `docs/` explains integration and measurement details.
+
+## Inspect the installed configuration
+
+The [configuration screenshot and source record](docs/recorded-configuration.md) show the installed Hermes endpoint, context, turn limit and tool servers. Compare them with the setup template when reproducing the run.

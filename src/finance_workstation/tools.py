@@ -139,9 +139,26 @@ def execute(name: str, args: dict) -> dict:
                   "status": "pending_human_review", "order_submitted": False,
                   "source_reports": [r["report_id"] for r in state["reports"]]}
         path = OUT / f"{draft_id}.json"
-        if not path.exists():
-            path.write_text(json.dumps(record, indent=2) + "\n")
-        return {"draft_id": draft_id, "path": str(path), "status": record["status"],
+        created = False
+        try:
+            with path.open("x") as handle:
+                handle.write(json.dumps(record, indent=2) + "\n")
+            created = True
+        except FileExistsError:
+            pass
+        saved = json.loads(path.read_text())
+        if saved.get("reviewer") != reviewer:
+            raise ValueError(f"Draft already belongs to reviewer {saved.get('reviewer')}; no change was saved")
+        for field in ("snapshot_sha256", "candidate", "status", "order_submitted"):
+            if saved.get(field) != record[field]:
+                raise ValueError("Existing draft differs from the requested review; no change was saved")
+        action = "Saved" if created else "Verified existing"
+        receipt = (f"{action} {draft_id} for {reviewer}, pending human review. "
+                   "Verified the local draft; no order was submitted or Google Sheet changed.")
+        return {"draft_id": draft_id, "path": str(path), "status": saved["status"],
+                "reviewer": saved["reviewer"], "created": created, "readback_verified": True,
+                "draft_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "slack_reply": receipt,
                 "order_submitted": False, "integration": "local_json_draft"}
     raise ValueError("Unknown finance tool")
 

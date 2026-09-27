@@ -18,7 +18,7 @@ out = Path.home() / ".hermes" / "profiles" / args.profile
 if out.exists():
     raise SystemExit(f"Refusing to overwrite {out}")
 config = json.loads((root / "config" / "hermes.json").read_text())
-tool_python = Path(os.environ.get("FINANCE_PYTHON", sys.executable)).expanduser().resolve()
+tool_python = Path(os.environ.get("FINANCE_PYTHON", sys.executable)).expanduser().absolute()
 if not tool_python.exists():
     raise SystemExit(f"Python interpreter does not exist: {tool_python}")
 has_mlflow = subprocess.run([str(tool_python), "-c", "import mlflow"],
@@ -26,6 +26,10 @@ has_mlflow = subprocess.run([str(tool_python), "-c", "import mlflow"],
 out.mkdir(parents=True)
 config["mcp_servers"]["finance"]["command"] = str(tool_python)
 config["mcp_servers"]["finance"]["args"] = [str(root / "src" / "finance_workstation" / "tools.py")]
+server_env = config["mcp_servers"]["finance"].setdefault("env", {})
+for variable in ("FINANCE_DATA_DIR", "FINANCE_DRAFT_DIR"):
+    if os.environ.get(variable):
+        server_env[variable] = str(Path(os.environ[variable]).expanduser().resolve())
 if not has_mlflow:
     config["mcp_servers"]["finance"]["env"]["FINANCE_MLFLOW_TRACE"] = "0"
 (out / "config.yaml").write_text(json.dumps(config, indent=2) + "\n")

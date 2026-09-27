@@ -1,0 +1,96 @@
+{
+  "session_id": "20260926_214255_48b4f1fc",
+  "calls": [
+    {
+      "exchange": "73fb6202671b4fd7a37acc3167151de7.json",
+      "sha256": "2197c65c05e72dadbaddf1e5cf835a585a677d37e8a982a0ebd9b8718757afd1",
+      "kind": "session_title",
+      "usage": {
+        "completion_tokens": 525,
+        "prompt_tokens": 284,
+        "total_tokens": 809,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "seconds": 21.474201417004224,
+      "http_status": 200
+    },
+    {
+      "exchange": "2d964f54364c4381a11ee56fe0a52556.json",
+      "sha256": "7a125cc677fbd0ddc309c195a9ecd7c927b8212a02331a9c7cc3db09c1e5cf1f",
+      "kind": "main",
+      "usage": {
+        "completion_tokens": 177,
+        "prompt_tokens": 2999,
+        "total_tokens": 3176,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "seconds": 15.528174958999443,
+      "http_status": 200
+    },
+    {
+      "exchange": "80821db741a548d9a7b1113b02bd7e6c.json",
+      "sha256": "acd9e6e7fd9a969a4a0eec2524d30c47fe9f9d903d0588105f6ddbfa08b879a7",
+      "kind": "main",
+      "usage": {
+        "completion_tokens": 213,
+        "prompt_tokens": 5136,
+        "total_tokens": 5349,
+        "prompt_tokens_details": {
+          "cached_tokens": 5005
+        }
+      },
+      "seconds": 9.456039333002991,
+      "http_status": 200
+    },
+    {
+      "exchange": "7268a9c9b7904be7bb1e6b1d84b9e504.json",
+      "sha256": "362d0673af244976082f3fdb682a2c297024c2ffe98853cf03a3384adbc8e28e",
+      "kind": "main",
+      "usage": {
+        "completion_tokens": 34,
+        "prompt_tokens": 4295,
+        "total_tokens": 4329,
+        "prompt_tokens_details": {
+          "cached_tokens": 2995
+        }
+      },
+      "seconds": 5.668211208001594,
+      "http_status": 200
+    },
+    {
+      "exchange": "f560880fd4d6406aa44c815b39673e59.json",
+      "sha256": "1fbbaf66c8c6c715d2616aacf992ecc61abed4df15460b96edda2feaf6ce6499",
+      "kind": "main",
+      "usage": {
+        "completion_tokens": 399,
+        "prompt_tokens": 5009,
+        "total_tokens": 5408,
+        "prompt_tokens_details": {
+          "cached_tokens": 4291
+        }
+      },
+      "seconds": 18.413812957995106,
+      "http_status": 200
+    },
+    {
+      "exchange": "ddd57569713444028fa2c770bc7ed48a.json",
+      "sha256": "d550d6fdbecd85365b9931608b35435bde2b89399186b75481c24bf669729b73",
+      "kind": "main",
+      "usage": {
+        "completion_tokens": 142,
+        "prompt_tokens": 5541,
+        "total_tokens": 5683,
+        "prompt_tokens_details": {
+          "cached_tokens": 5132
+        }
+      },
+      "seconds": 7.195604082997306,
+      "http_status": 200
+    }
+  ],
+  "scope": "Both Slack turns and auxiliary requests matched by full comparison prompt. Durations are proxy request times, not end-to-end latency."
+}

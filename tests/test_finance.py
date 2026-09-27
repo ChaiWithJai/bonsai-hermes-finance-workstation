@@ -39,6 +39,17 @@ class FinanceDemoTests(unittest.TestCase):
                 saved = json.loads(Path(result["path"]).read_text())
                 self.assertEqual(saved["status"], "pending_human_review")
                 self.assertFalse(saved["order_submitted"])
+                self.assertTrue(result["created"])
+                self.assertTrue(result["readback_verified"])
+                original = Path(result["path"]).read_bytes()
+                repeated = finance.execute("write_review_draft", {
+                    "expected_snapshot_sha256": before["snapshot_sha256"], "reviewer": "A reviewer"})
+                self.assertFalse(repeated["created"])
+                self.assertEqual(repeated["draft_sha256"], result["draft_sha256"])
+                with self.assertRaisesRegex(ValueError, "already belongs"):
+                    finance.execute("write_review_draft", {
+                        "expected_snapshot_sha256": before["snapshot_sha256"], "reviewer": "Another reviewer"})
+                self.assertEqual(Path(result["path"]).read_bytes(), original)
                 self.assertEqual(finance.execute("read_portfolio", {})["holdings"], before["holdings"])
             finally:
                 finance.OUT = old_out
