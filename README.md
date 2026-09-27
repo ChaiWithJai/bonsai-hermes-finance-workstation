@@ -54,7 +54,7 @@ hermes --profile finance-workstation chat --oneshot -Q -q \
 
 Hermes should call `read_portfolio`, `read_analyst_reports` and `compare_scenarios`. Its explanation should preserve the numbers above and identify the low-confidence Orbit report, `FIC-REPORT-02`. A [recorded Slack run](evidence/sessions/slack-live-evidence.json) shows this tool sequence using the A+ Client Commitments profile and bundled CSVs. It is separate from the local profile created above.
 
-To save a candidate, ask the agent to prepare a review draft for a named reviewer. The `write_review_draft` tool checks the source snapshot before writing a JSON file under `drafts/`, with status `pending_human_review`. Changing the source requires a fresh comparison.
+To save a candidate, ask the agent to prepare a review draft for a named reviewer. The `write_review_draft` tool checks the source snapshot before writing a JSON file under `drafts/`, with status `pending_human_review`. Changing the source requires a fresh comparison. The tool reads the saved file back before confirming it, and repeating the same request preserves the original draft. A different reviewer requires resolving the existing assignment; the tool rejects that request rather than silently changing reviewers.
 
 ## How the workflow is divided
 
