@@ -1,0 +1,24 @@
+{
+  "session_id": "20260926_230214_32f93c",
+  "outcome": "needs_revision",
+  "review_type": "agent",
+  "finding": "The agent retried extraction with char_limit 40000, but received the same truncated text. Its answer still asserts section 2.2 and service-credit terms and infers an absent measurement method from incomplete content.",
+  "tool_calls": [
+    {
+      "name": "web_search",
+      "arguments": "{\"query\":\"Cloudflare enterprise terms of service obligations site:cloudflare.com\",\"limit\":5}"
+    },
+    {
+      "name": "web_search",
+      "arguments": "{\"query\":\"Cloudflare enterprise SLA service commitments page\",\"limit\":5}"
+    },
+    {
+      "name": "web_extract",
+      "arguments": "{\"urls\":[\"https://www.cloudflare.com/enterprise-support-sla/\"]}"
+    },
+    {
+      "name": "web_extract",
+      "arguments": "{\"urls\":[\"https://www.cloudflare.com/enterprise-support-sla/\"],\"char_limit\":40000}"
+    }
+  ]
+}

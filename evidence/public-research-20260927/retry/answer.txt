@@ -1,0 +1,7 @@
+Source: Cloudflare Enterprise Subscription Service Level Agreement, https://www.cloudflare.com/enterprise-support-sla/, policy date April 1, 2026. This is public industry context only — it is not coverage of the sample holdings.
+
+The page commits the Service to (2.1) "Measurable Performance Enhancement," stating it will serve customer content measurably faster than the customer's content served without the Service, and (2.2) 100% uptime, with service credits as the remedy for failures.
+
+Issue for a software analyst to check: Section 2.1 defines no measurement method. Before relying on the performance commitment, verify how Cloudflare would establish the "without the Service" baseline, which metric defines "measurably faster," who measures it, and how a disputed reading would be handled under the claim process in Section 2.
+
+No draft was saved.

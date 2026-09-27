@@ -1,0 +1,32 @@
+{
+  "session_id": "20260926_230614_8b2316",
+  "tool_calls": [
+    {
+      "name": "web_search",
+      "arguments": "{\"query\":\"Cloudflare enterprise terms of service or SLA service commitments site:developers.cloudflare.com OR site:blog.cloudflare.com OR site:cloudflare.com\",\"limit\":5}"
+    },
+    {
+      "name": "web_extract",
+      "arguments": "{\"urls\":[\"https://www.cloudflare.com/enterprise-support-sla/\"],\"char_limit\":15000}"
+    }
+  ],
+  "source_url": "https://www.cloudflare.com/enterprise-support-sla/",
+  "extraction_sha256": "5cf530373fc49f2769253a6f5eb859639d4ba7bae985f6f25c771f0bf2602f7f",
+  "answer_words": 140,
+  "checks": {
+    "native_search_and_extract": true,
+    "primary_url_cited": true,
+    "scope_identified": true,
+    "no_write_tool_called": true,
+    "relevant_sections_retrieved": true,
+    "fee_cap_units_precise": false
+  },
+  "review_type": "agent review, not human annotation",
+  "limits": [
+    "One public research request; provider reliability not measured.",
+    "No independent before/after filesystem comparison was captured. No write tool was invoked.",
+    "This run used CLI; the optional web toolset was not exercised through Slack."
+  ],
+  "outcome": "retrieval_verified; answer_precision_needs_review",
+  "finding": "The answer says six months of annual fees; section 9.3 specifies six months of cumulative Monthly Fees actually paid during the annual billing period. Preserve the billing basis when summarizing numeric obligations."
+}

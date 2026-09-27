@@ -23,7 +23,7 @@ The [llama.cpp server reference](https://github.com/ggml-org/llama.cpp/tree/mast
 
 ## What was observed
 
-The local calculation and recorded Slack draft used the same Python portfolio tools. The saved draft preserved its candidate and named reviewer. The profile exposes four tools with an eight-turn limit and disabled memory. The local launch script supplies sampling defaults; the captured Slack profile used a separate proxy. Keep those paths distinct when reproducing a run. See [setup](setup.md), [connected verification](google-verification.md) and [request timing](performance.md).
+The local calculation and recorded Slack draft used the same Python portfolio tools. The saved draft preserved its candidate and named reviewer. The base profile exposes four finance tools with an eight-turn limit and disabled memory. The optional research profile also enables Hermes web search and page extraction. The local launch script supplies sampling defaults; the captured Slack profile used a separate proxy. Keep those paths distinct when reproducing a run. See [setup](setup.md), [connected verification](google-verification.md) and [request timing](performance.md).
 
 The [configuration capture](recorded-configuration.md) provides the installed profile fields and available request settings. It is a reference view generated from those records. The current evidence supports reproducing the configuration; it does not establish a domain-specific fine-tune or a best setting across competing configurations.
 

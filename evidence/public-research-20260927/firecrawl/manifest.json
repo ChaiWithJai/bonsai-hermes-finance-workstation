@@ -1,0 +1,13 @@
+{
+  "model_sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+  "runtime_sha256": "1ad69ebaada923760c52c1dc50daf198a22c2adb4a9dcccd25779fa7079f353b",
+  "profile_sha256": "33cc6247175e9a3b15e1a0a65ec9b1b31a8a41a7db0be7ab8c0586b0dcd4526f",
+  "instructions_sha256": "560567b3cbc274b8b010aa23a55f8b2b612132fac88246d4f19c91ef41d042e7",
+  "checks": [
+    "Native search and page extraction",
+    "Claims grounded in returned page text",
+    "Industry context kept separate from sample holdings",
+    "No portfolio or draft write tool invoked; filesystem unchanged claim not independently measured"
+  ],
+  "intervention": "Native Firecrawl extraction replaces native Exa extraction; same v2 research instructions and request."
+}

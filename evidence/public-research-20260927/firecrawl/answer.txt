@@ -1,0 +1,5 @@
+Cloudflare's primary-source page is its Enterprise Subscription Service Level Agreement, dated April 1, 2026: https://www.cloudflare.com/enterprise-support-sla/
+
+It commits to 100% uptime and measurable performance enhancement, makes Service Credits the sole remedy for failures (capped at six months of annual fees), and requires customers to submit a claim within five business days, before the end of the following billing month. Support response times vary by severity (P1–P4) and plan (Standard vs. Premium), and separate service-specific SLAs control for R2, Queues, and Workers.
+
+One issue a software analyst should check: the Section 10 Service Credit formula is rendered only as an image on the page, so the exact calculation (including the "Affected Customer Ratio") should be verified against the official PDF or an account manager before treating the SLA as a cost-recovery model. This is industry context, not coverage of the sample holdings.

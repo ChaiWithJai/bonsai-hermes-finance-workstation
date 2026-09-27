@@ -1,0 +1,12 @@
+{
+  "model_sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+  "runtime_sha256": "1ad69ebaada923760c52c1dc50daf198a22c2adb4a9dcccd25779fa7079f353b",
+  "profile_sha256": "5cb94506650322d7f77aefedd14946f11a5ac098a97828a8c6f9cec510d58992",
+  "instructions_sha256": "0df8036622ac9e434c4cab9d374cf1491d0752988b0229151b5281ee54ac8ea2",
+  "checks": [
+    "Uses native web_search and web_extract",
+    "Cites primary-source URL",
+    "Separates industry context from sample issuer assumptions",
+    "No portfolio or draft write tool invoked; filesystem unchanged claim not independently measured"
+  ]
+}

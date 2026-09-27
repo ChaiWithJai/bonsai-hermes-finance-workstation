@@ -1,0 +1,31 @@
+{
+  "session_id": "20260926_225501_a7db86",
+  "tool_calls": [
+    {
+      "name": "web_search",
+      "arguments": "{\"query\":\"Cloudflare enterprise service commitments commitments\"}"
+    },
+    {
+      "name": "web_extract",
+      "arguments": "{\"urls\":[\"https://www.cloudflare.com/enterprise-support-sla/\"],\"char_limit\":8000}"
+    }
+  ],
+  "source_url": "https://www.cloudflare.com/enterprise-support-sla/",
+  "extraction_sha256": "f6fb68bbd484322dc711150a502448047dd659972befc46e2e7568af2e34d7e5",
+  "answer_words": 109,
+  "checks": {
+    "native_search_and_extract": true,
+    "primary_url_cited": true,
+    "scope_identified": true,
+    "no_write_tool_called": true,
+    "claims_supported_by_extracted_page": false
+  },
+  "review_type": "agent review, not human annotation",
+  "limits": [
+    "One public research request; provider reliability not measured.",
+    "No independent before/after filesystem comparison was captured. No write tool was invoked.",
+    "This run used CLI; the optional web toolset was not exercised through Slack."
+  ],
+  "outcome": "needs_revision",
+  "finding": "The extracted page ends during section 2.1. The answer includes section 9 service-credit details available only in search snippets, contrary to the research instructions."
+}

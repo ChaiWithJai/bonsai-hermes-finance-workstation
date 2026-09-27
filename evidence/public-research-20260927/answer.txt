@@ -1,0 +1,5 @@
+Primary source: Cloudflare Enterprise Subscription Service Level Agreement, policy dated April 1, 2026 — https://www.cloudflare.com/enterprise-support-sla/
+
+This is industry context on vendor service commitments, not coverage of the sample holdings.
+
+The SLA commits to measurable performance enhancement and 100% uptime, with service credits capped at six months of monthly fees and stated as the sole and exclusive remedy. A software analyst should verify the exclusion list in Section 8.1 and the definition of "Unscheduled Service Outage" (which excludes Customer Planned Downtime and listed SLA exclusions) before relying on the 100% uptime claim, since those carve-outs determine whether their own maintenance windows and expected third-party incidents would count against the commitment.

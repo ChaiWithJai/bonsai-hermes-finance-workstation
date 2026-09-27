@@ -1,0 +1,12 @@
+{
+  "model_sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+  "runtime_sha256": "1ad69ebaada923760c52c1dc50daf198a22c2adb4a9dcccd25779fa7079f353b",
+  "profile_sha256": "36aeb118f4baf7b8525d304dedda685f1e7c07430ba3d04129faee354fdf73b9",
+  "instructions_sha256": "560567b3cbc274b8b010aa23a55f8b2b612132fac88246d4f19c91ef41d042e7",
+  "checks": [
+    "Native search and page extraction",
+    "Claims grounded in returned page text",
+    "Industry context kept separate from sample holdings",
+    "No write tools invoked"
+  ]
+}
