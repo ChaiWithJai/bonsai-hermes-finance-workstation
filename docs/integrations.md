@@ -77,3 +77,12 @@ Ask for a primary-source page about a public issuer's service commitments, then 
 Public sources provide context for the reviewer. They do not change the sample return assumptions or saved candidate; update and validate the input snapshot before recalculating. The profile created without `--web-research` keeps its original tool access.
 
 The [recorded research runs](../evidence/public-research-20260927/README.md) show the provider change and a source-grounding failure. Firecrawl returned the relevant SLA sections in the first run, but the fee-cap wording was imprecise. Follow-up runs cited sections that were absent from truncated extractions. Review retrieved sections before using a research answer; the optional CLI path has not passed that check.
+
+After a research run, export its Hermes session and check that every cited section was in the extracted page. Use the session ID printed by Hermes and the URL in its answer:
+
+```sh
+hermes --profile portfolio-research sessions export --format jsonl --session-id SESSION_ID /tmp/finance-research.jsonl --yes
+python3 scripts/check_research_citations.py /tmp/finance-research.jsonl --url https://www.cloudflare.com/enterpriseterms/
+```
+
+The command exits with status 2 if the source page, section text, URL, word limit or no-write condition fails. Passing only establishes section presence. Read the cited clause yourself before publishing: the [follow-up evaluation](../evidence/public-research-20260927/followup-review.json) contains a run that passed this mechanical check but added an unsupported claim about the SLA.

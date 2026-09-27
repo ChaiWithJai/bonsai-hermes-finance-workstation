@@ -1,0 +1,23 @@
+{
+  "session_id": "20260927_002633_170b57",
+  "source_url": "https://www.cloudflare.com/enterpriseterms/",
+  "cited_sections": [
+    "5",
+    "5.2"
+  ],
+  "missing_sections": [
+    "5",
+    "5.2"
+  ],
+  "extractions": 2,
+  "answer_words": 108,
+  "checks": {
+    "source_page_extracted": true,
+    "answer_cites_source_url": true,
+    "cited_sections_in_extraction": false,
+    "within_word_limit": true,
+    "no_write_tool_called": true
+  },
+  "passed": false,
+  "scope": "Section presence and format only; human review of meaning is still required."
+}
