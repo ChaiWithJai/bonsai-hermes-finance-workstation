@@ -76,7 +76,7 @@ Ask for a primary-source page about a public issuer's service commitments, then 
 
 Public sources provide context for the reviewer. They do not change the sample return assumptions or saved candidate; update and validate the input snapshot before recalculating. The profile created without `--web-research` keeps its original tool access.
 
-The [recorded research runs](../evidence/public-research-20260927/README.md) show the provider change and a source-grounding failure. Firecrawl returned the relevant SLA sections in the first run, but the fee-cap wording was imprecise. Follow-up runs cited sections that were absent from truncated extractions. Review retrieved sections before using a research answer; the optional CLI path has not passed that check.
+The [recorded research runs](../evidence/public-research-20260927/README.md) show both failed answers and one bounded success. Earlier answers misstated an SLA cap or cited sections absent from visible extraction. A later Section 2.3 load-testing question passed the source-presence check and an agent meaning review. Review retrieved sections before using a new research answer; this single success is not a general reliability result.
 
 After a research run, export its Hermes session and check that every cited section was in the extracted page. Use the session ID printed by Hermes and the URL in its answer:
 

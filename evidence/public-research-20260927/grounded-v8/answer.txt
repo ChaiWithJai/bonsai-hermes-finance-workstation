@@ -1,0 +1,1 @@
+Section 2.3 (https://www.cloudflare.com/enterpriseterms/) restricts testing. Practical question: does Customer need Cloudflare's prior written consent before performing load testing—including introducing software or automated agents or scripts—unless the tests are expressly permitted by the Documentation or explicitly set forth in the Order Form?
