@@ -1,0 +1,7 @@
+Primary source: https://www.cloudflare.com/enterpriseterms/ (Cloudflare Enterprise Subscription Agreement, effective September 12, 2025).
+
+Cloudflare's public terms lay out customer obligations and data responsibility in Section 5. Section 5.2 is the key obligation: Cloudflare is not obligated to keep copies of Customer Data and may delete it at any time after 72 hours from capture.
+
+One issue a software analyst should check: whether the customer's production environment assumes Cloudflare as a durable storage layer, and whether their own backup/replication design covers that 72-hour deletion window and the no-liability clause for loss or deletion of Customer Data.
+
+This is industry context only — not coverage of any sample holdings. No draft saved.

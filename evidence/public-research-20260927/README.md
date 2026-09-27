@@ -7,3 +7,5 @@ The [answer](firecrawl/answer.txt) still needs a wording correction. It summariz
 The original Exa extraction stopped during section 2.1. Both the [first answer](answer.txt) and [retry](retry/answer.txt) asserted terms from later sections using search snippets. Increasing the requested character limit did not change the returned text. Those failed runs are preserved with their tool calls, configuration hashes and reviews.
 
 These are repeated development runs of one CLI request, not a reliability estimate or a Slack research test. The full retrieved pages remain in the private review records; public artifacts include their hashes.
+
+A later [source-grounding review](followup-review.json) tested four more local Bonsai runs. Each failed the publication check: the model either added an unsupported adjacent claim or cited a section absent from the extracted page. The last answer's Section 5.2 claim is correct on Cloudflare's official page, but the Hermes extraction was truncated before that section. The optional research answer should not be presented as verified until the tool or publication gate enforces a full-source read.

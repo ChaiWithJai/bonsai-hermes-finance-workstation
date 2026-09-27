@@ -76,4 +76,4 @@ Ask for a primary-source page about a public issuer's service commitments, then 
 
 Public sources provide context for the reviewer. They do not change the sample return assumptions or saved candidate; update and validate the input snapshot before recalculating. The profile created without `--web-research` keeps its original tool access.
 
-The [recorded research runs](../evidence/public-research-20260927/README.md) show the provider change and remaining answer-quality issue. Firecrawl returned the relevant sections, while the answer still needs review for precise fee-cap wording.
+The [recorded research runs](../evidence/public-research-20260927/README.md) show the provider change and a source-grounding failure. Firecrawl returned the relevant SLA sections in the first run, but the fee-cap wording was imprecise. Follow-up runs cited sections that were absent from truncated extractions. Review retrieved sections before using a research answer; the optional CLI path has not passed that check.
