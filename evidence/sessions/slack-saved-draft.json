@@ -1,0 +1,32 @@
+{
+  "session_id": "20260926_214255_48b4f1fc",
+  "comparison": "Reallocating 10 points from Harbor to Orbit lifts base return from 7.75% to 8.65% (upside 13.75% \u2192 15.65%), but worsens the downside from -14.5% to -16.7%. The Orbit growth assumption in FIC-REPORT-02 (Fictional Software Desk, low confidence) is the analyst view needing review.",
+  "receipt": "Saved DRAFT-7ca6093bd3fe for Anthony, pending human review. Verified the local draft; no order was submitted or Google Sheet changed.",
+  "source": "Downloaded Google Sheets snapshot, not a new live Sheet read",
+  "snapshot_sha256": "7ca6093bd3fe8d1b6ce5219b8a4ec0531a8ba282e775ab78596fa0e9a74cac32",
+  "readback": {
+    "draft_id": "DRAFT-7ca6093bd3fe",
+    "reviewer": "Anthony",
+    "status": "pending_human_review",
+    "order_submitted": false,
+    "candidate": {
+      "weights_pct": {
+        "FCT-HARBOR": 35,
+        "FCT-ORBIT": 45,
+        "FCT-RESERVE": 20
+      },
+      "scenario_returns_pct": {
+        "base": 8.65,
+        "upside": 15.65,
+        "downside": -16.7
+      },
+      "one_way_turnover_pct": 10.0,
+      "probability_weighted_return_pct": 4.98,
+      "objective_score": 3.11
+    },
+    "sha256": "3ae180c7c1e53508249a941f27f075c42a47f60f7f09e7bf70e51c57d663928a"
+  },
+  "slack_delivery": "Both replies inspected in actual Slack thread",
+  "human_acceptance": "pending",
+  "scope": "Live Slack comparison and locally saved review draft. No Google write or order submission."
+}
