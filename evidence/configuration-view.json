@@ -18,5 +18,24 @@
   "mcp_server_names": [
     "commitments",
     "finance_workstation"
-  ]
+  ],
+  "recorded_request": {
+    "model": "bonsai-ui-public-ternary-bonsai2",
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.05,
+    "max_tokens": 1536,
+    "stream": false,
+    "chat_template_kwargs": {
+      "enable_thinking": true,
+      "reasoning_effort": "medium"
+    }
+  },
+  "recorded_request_source": {
+    "exchange_id": "2d964f54364c4381a11ee56fe0a52556",
+    "sha256": "7a125cc677fbd0ddc309c195a9ecd7c927b8212a02331a9c7cc3db09c1e5cf1f",
+    "session_id": "20260926_214255_48b4f1fc",
+    "evidence": "sessions/slack-saved-draft-usage.json"
+  }
 }
